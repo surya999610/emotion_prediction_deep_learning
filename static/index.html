@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moodlens – read the emotion in a sentence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Moodlens</a>
+    <span class="pill" id="health" data-state="wait"><i></i><span id="health-text">Waking the model…</span></span>
+  </header>
+
+  <main class="wrap">
+    <section class="compose">
+      <h1>Write a sentence. See what it feels like.</h1>
+      <p class="sub">A BiGRU network scores six emotions and shows how sure it is.</p>
+
+      <form id="form" class="card" novalidate>
+        <label class="sr" for="text">Text to analyze</label>
+        <textarea id="text" maxlength="2000" rows="4" placeholder="Type or paste something you wrote or said…"></textarea>
+        <div class="meta"><span>Ctrl + Enter to analyze</span><span id="count">0 / 2000</span></div>
+        <div class="actions">
+          <button id="go" class="go" type="submit" disabled><span class="spin" aria-hidden="true"></span><span id="go-label">Analyze text</span></button>
+          <button id="clear" class="ghost" type="button">Clear</button>
+        </div>
+      </form>
+      <p class="err" id="err" role="alert" hidden></p>
+
+      <p class="try">Try an example</p>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <section class="stage" id="stage" aria-live="polite">
+      <div class="orb-wrap">
+        <span class="ring"></span><span class="ring r2"></span>
+        <div class="orb"><i></i><i></i><b id="emoji">💭</b></div>
+      </div>
+      <p class="state" id="state">Waiting for text</p>
+      <h2 class="emotion" id="emotion">No reading yet</h2>
+      <p class="conf" id="conf-line" hidden><span id="conf">0.0</span>% confidence</p>
+      <ul class="bars" id="bars"></ul>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
